@@ -3,7 +3,7 @@
 '''
 
 import os
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
 
@@ -13,11 +13,15 @@ app.register_blueprint(app_views)
 
 
 app.teardown_appcontext
-
-
 def teardown_flask(exception):
     '''The Flask app end event listener.'''
     storage.close()
+
+
+@app.errorhandler(404)
+def error404():
+    """Function to handle the 404 Error"""
+    return jsonify(error="Not Found"), 404
 
 
 if __name__ == "__main__":
