@@ -190,9 +190,9 @@ class TestFileStorage(unittest.TestCase):
         self.assertGreater(storage.count(State), 0)
         self.assertEqual(storage.count(), storage.count(None))
         a = storage.count(State)
-        State(name='Enugu').save()
+        State(name='Kano').save()
         self.assertGreater(storage.count(State), a)
-        Amenity(name='Free WiFi').save()
+        Amenity(name='Free Security').save()
         self.assertGreater(storage.count(), storage.count(State))
         with self.assertRaises(TypeError):
             storage.count(State, 'op')
