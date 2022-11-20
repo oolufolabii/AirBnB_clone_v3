@@ -42,7 +42,7 @@ def get_cities(state_id=None, city_id=None):
             return jsonify(cities)
     elif city_id:
         city = storage.get(City, city_id)
-        if city: 
+        if city:
             return jsonify(city.to_dict())
     raise NotFound()
 
@@ -84,7 +84,7 @@ def add_city(state_id=None):
 
 
 def city_update(state_id=None, city_id=None):
-    '''Updates the state using the given id.
+    '''Updates the city using the given id.
     '''
     dict_keys = ('id', 'state_id', 'created_at', 'updated_at')
     if city_id:
